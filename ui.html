@@ -1,0 +1,129 @@
+<style>
+  .section {
+    margin: 16px;
+    padding: 16px;
+    border-radius: 8px;
+    background-color: #f5f5f5;
+  }
+
+  h2, h3 {
+    margin: 0 0 16px 0;
+    color: #333;
+  }
+
+  h2 { font-size: 16px; }
+  h3 { font-size: 14px; }
+
+  textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 8px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+
+  button {
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .primary-button {
+    width: 100%;
+    background-color: #18A0FB;
+    color: white;
+    border: none;
+  }
+
+  .secondary-button {
+    background-color: #fff;
+    border: 1px solid #ccc;
+  }
+
+  .language-buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  .language-buttons button {
+    flex: 1;
+  }
+
+  #extracted-texts {
+    max-height: 200px;
+    overflow-y: auto;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+</style>
+
+<div class="section">
+  <h2>多言語テキスト置換</h2>
+  <textarea id="translation-input" placeholder="翻訳JSONデータをここに貼り付け"></textarea>
+  <button class="primary-button" onclick="importTranslations()">翻訳データインポート</button>
+</div>
+
+<div class="section">
+  <h3>言語切り替え</h3>
+  <div class="language-buttons">
+    <button class="secondary-button" onclick="replaceTexts('ja')">日本語</button>
+    <button class="secondary-button" onclick="replaceTexts('en')">英語</button>
+    <button class="secondary-button" onclick="replaceTexts('zh')">中国語</button>
+  </div>
+</div>
+
+<div class="section">
+  <h3>テキスト抽出</h3>
+  <button class="secondary-button" style="width: 100%; margin-bottom: 16px;" onclick="extractTexts()">テキスト抽出</button>
+  <div id="extracted-texts"></div>
+</div>
+
+<script>
+  function importTranslations() {
+    const input = document.getElementById('translation-input');
+    const extractedTextsDiv = document.getElementById('extracted-texts');
+    
+    try {
+      const data = JSON.parse(input.value);
+      parent.postMessage({ 
+        pluginMessage: { 
+          type: 'import-translations', 
+          data: input.value 
+        } 
+      }, '*');
+    } catch (error) {
+      alert('無効なJSONデータです');
+    }
+  }
+
+  function replaceTexts(language) {
+    parent.postMessage({ 
+      pluginMessage: { 
+        type: 'replace-texts', 
+        language: language 
+      } 
+    }, '*');
+  }
+
+  function extractTexts() {
+    parent.postMessage({ 
+      pluginMessage: { 
+        type: 'extract-texts' 
+      } 
+    }, '*');
+  }
+
+  // テキスト抽出結果の受信
+  window.onmessage = (event) => {
+    const msg = event.data.pluginMessage;
+    if (msg.type === 'extracted-texts') {
+      const extractedTextsDiv = document.getElementById('extracted-texts');
+      extractedTextsDiv.innerHTML = msg.texts.map(text => 
+        `<div>${text}</div>`
+      ).join('');
+    }
+  };
+</script>
