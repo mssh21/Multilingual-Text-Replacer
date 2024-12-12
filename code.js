@@ -121,8 +121,12 @@ function findTranslation(text, language) {
         if (translationSet.en === text) {
             return translationSet[language];
         }
-        // 中国語テキストで検索
-        if (translationSet.zh === text) {
+        // 簡体字テキストで検索
+        if (translationSet.zhCN === text) {
+            return translationSet[language];
+        }
+        // 繁体字テキストで検索
+        if (translationSet.zhTW === text) {
             return translationSet[language];
         }
     }

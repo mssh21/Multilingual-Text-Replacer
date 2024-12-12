@@ -2,14 +2,15 @@ interface TranslationData {
   [key: string]: {
     ja: string;
     en: string;
-    zh: string;
+    zhCN: string;
+    zhTW: string;
   };
 }
 
 // プラグインの状態管理
 const pluginState = {
   translationData: {} as TranslationData,
-  currentLanguage: 'ja' as 'ja' | 'en' | 'zh'
+  currentLanguage: 'ja' as 'ja' | 'en' | 'zhCN' | 'zhTW'
 };
 
 // 非同期フォント読み込み関数
@@ -71,7 +72,7 @@ function handleTranslationImport(jsonData: string) {
 }
 
 // テキスト置換処理
-async function handleTextReplacement(language: 'ja' | 'en' | 'zh') {
+async function handleTextReplacement(language: 'ja' | 'en' | 'zhCN' | 'zhTW') {
   const selection = figma.currentPage.selection;
   
   if (selection.length === 0) {
@@ -88,7 +89,7 @@ async function handleTextReplacement(language: 'ja' | 'en' | 'zh') {
 }
 
 // ノード内のテキスト置換
-async function replaceTextsInNode(node: SceneNode, language: 'ja' | 'en' | 'zh'): Promise<number> {
+async function replaceTextsInNode(node: SceneNode, language: 'ja' | 'en' | 'zhCN' | 'zhTW'): Promise<number> {
   let count = 0;
 
   // テキストノードの処理
@@ -118,7 +119,7 @@ async function replaceTextsInNode(node: SceneNode, language: 'ja' | 'en' | 'zh')
 }
 
 // 翻訳検索
-function findTranslation(text: string, language: 'ja' | 'en' | 'zh'): string | null {
+function findTranslation(text: string, language: 'ja' | 'en' | 'zhCN' | 'zhTW'): string | null {
   for (const key in pluginState.translationData) {
     const translationSet = pluginState.translationData[key];
     
@@ -132,8 +133,13 @@ function findTranslation(text: string, language: 'ja' | 'en' | 'zh'): string | n
       return translationSet[language];
     }
 
-    // 中国語テキストで検索
-    if (translationSet.zh === text) {
+    // 簡体字テキストで検索
+    if (translationSet.zhCN === text) {
+      return translationSet[language];
+    }
+
+    // 繁体字テキストで検索
+    if (translationSet.zhTW === text) {
       return translationSet[language];
     }
   }

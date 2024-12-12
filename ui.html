@@ -29,6 +29,7 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
+    transition: background-color 0.3s ease;
   }
 
   .primary-button {
@@ -54,12 +55,9 @@
   }
 
   .language-buttons {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 8px;
-  }
-
-  .language-buttons button {
-    flex: 1;
   }
 
   #extracted-texts {
@@ -81,7 +79,8 @@
   <div class="language-buttons">
     <button class="secondary-button" onclick="replaceTexts('ja')">日本語</button>
     <button class="secondary-button" onclick="replaceTexts('en')">英語</button>
-    <button class="secondary-button" onclick="replaceTexts('zh')">中国語</button>
+    <button class="secondary-button" onclick="replaceTexts('zhCN')">簡体字</button>
+    <button class="secondary-button" onclick="replaceTexts('zhTW')">繁体字</button>
   </div>
 </div>
 
