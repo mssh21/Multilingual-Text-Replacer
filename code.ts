@@ -126,6 +126,16 @@ function findTranslation(text: string, language: 'ja' | 'en' | 'zh'): string | n
     if (translationSet.ja === text) {
       return translationSet[language];
     }
+
+    // 英語テキストで検索
+    if (translationSet.en === text) {
+      return translationSet[language];
+    }
+
+    // 中国語テキストで検索
+    if (translationSet.zh === text) {
+      return translationSet[language];
+    }
   }
   return null;
 }
