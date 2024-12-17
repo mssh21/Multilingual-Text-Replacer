@@ -1,6 +1,6 @@
 {
   "name": "Multilingual Text Replacer",
-  "id": "1448632609646115715",
+  "id": "YOUR_PLUGIN_ID_HERE",
   "api": "1.0.0",
   "main": "code.js",
   "capabilities": [],

@@ -18,6 +18,9 @@ build/
 .env.test.local
 .env.production.local
 
+# Figma
+manifest.json
+
 # Logs
 npm-debug.log*
 yarn-debug.log*
