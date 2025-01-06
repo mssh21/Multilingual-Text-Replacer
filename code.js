@@ -79252,7 +79252,7 @@ function loadFontForTextNode(textNode) {
 // メイン処理
 figma.showUI(__html__, {
     visible: true,
-    width: 300,
+    width: 400,
     height: 540,
     position: { x: 0, y: 0 },
 });
