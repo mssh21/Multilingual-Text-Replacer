@@ -1,7 +1,7 @@
 {
-  "name": "Multilingual-Text-Replacer",
+  "name": "multilingual-text-replacer",
   "version": "1.0.0",
-  "description": "Your Figma Plugin",
+  "description": "A Figma plugin for switching text between multiple languages (Japanese, English, Simplified Chinese, Traditional Chinese)",
   "main": "code.js",
   "scripts": {
     "build": "tsc -p tsconfig.json",
@@ -9,8 +9,27 @@
     "lint:fix": "eslint --ext .ts,.tsx --ignore-pattern node_modules --fix .",
     "watch": "npm run build -- --watch"
   },
-  "author": "",
-  "license": "",
+  "author": "mssh21",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mssh21/Multilingual-Text-Replacer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mssh21/Multilingual-Text-Replacer/issues"
+  },
+  "homepage": "https://github.com/mssh21/Multilingual-Text-Replacer#readme",
+  "keywords": [
+    "figma",
+    "plugin",
+    "multilingual",
+    "i18n",
+    "internationalization",
+    "translation",
+    "japanese",
+    "english",
+    "chinese"
+  ],
   "devDependencies": {
     "@figma/eslint-plugin-figma-plugins": "*",
     "@figma/plugin-typings": "*",

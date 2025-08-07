@@ -18,9 +18,6 @@ build/
 .env.test.local
 .env.production.local
 
-# Figma
-manifest.json
-
 # Logs
 npm-debug.log*
 yarn-debug.log*
@@ -46,6 +43,9 @@ Thumbs.db
 
 # TypeScript
 *.tsbuildinfo
+
+# Figma Plugin
+manifest.json
 
 # Yarn
 .yarn/*
