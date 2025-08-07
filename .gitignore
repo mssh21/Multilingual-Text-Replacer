@@ -44,9 +44,6 @@ Thumbs.db
 # TypeScript
 *.tsbuildinfo
 
-# Figma Plugin
-manifest.json
-
 # Yarn
 .yarn/*
 !.yarn/patches
