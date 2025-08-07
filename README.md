@@ -38,19 +38,6 @@ Figmaデザイン内のテキストを複数言語で切り替えることがで
    npm run watch
    ```
 
-## Figmaでのプラグインセットアップ
-
-1. Figmaを開き、デスクトップアプリまたはブラウザでプラグイン開発モードを有効にする
-2. Figma > Plugins > Development > New Plugin... を選択
-3. "Link existing plugin" を選択し、`manifest-example.json`をコピーして`manifest.json`として保存
-4. `manifest.json`内の`YOUR_PLUGIN_ID_HERE`を一意のIDに変更
-5. プラグインを読み込み、開発を開始
-
-## 開発の始め方
-
-1. Visual Studio Codeで開発することを推奨
-2. 開発時は `npm run watch` でファイル監視モードを起動
-3. Figmaでプラグインを実行してテスト
 
 ## 翻訳データの形式
 
@@ -93,19 +80,7 @@ Figmaデザイン内のテキストを複数言語で切り替えることがで
 - **ビルドツール**: TypeScript Compiler
 - **リンター**: ESLint
 
-## プロジェクト構造
-
 ```
-├── code.ts          # メインプラグインロジック
-├── ui.html          # プラグインUI
-├── package.json     # プロジェクト設定
-├── tsconfig.json    # TypeScript設定
-└── manifest-example.json # Figmaプラグイン設定例
-```
-
-## 貢献
-
-バグ報告や機能要求は[Issues](https://github.com/mssh21/Multilingual-Text-Replacer/issues)にお気軽にお寄せください。
 
 ## ライセンス
 
